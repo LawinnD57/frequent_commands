@@ -124,7 +124,10 @@ cat file.txt|xclip
 SSH
 ssh-keygen -f mykey
 cat mykey.pub # you can copy this to authorized_keys
+
+SSH port binding
 ssh -L [LOCAL_IP:]LOCAL_PORT:DESTINATION:DESTINATION_PORT [USER@]SSH_SERVER
+ssh -p 2222 -L 5555:localhost:5555 kristi@explore.htb
 
 rev shell php worked with ext .htb (see html comment), user flag readable as www-data:
 848b16799025a2a389f0ebe25d531be6
