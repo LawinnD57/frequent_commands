@@ -154,6 +154,7 @@ smbclient -L \\active.htb -U SVC_TGS
 smbclient -N //10.129.146.152/general
 recurse ON
 mget *
+smbclient \\\\cascade\\Audit$ -U s.smith -c 'prompt OFF;recurse ON;mget *'
 C:\WIndows\System32\config\SAM
 C:\Windows\System32\config\SYSTEM
 sudo apt install samdump2
