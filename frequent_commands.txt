@@ -35,6 +35,9 @@ STUCK??
 nmap tcp? udp? -sS -Pn -p-? https on 80? http has php? CTRL+U? gobuster/dirbuster? subdoms/vhosts? hidden files? stego?
 versions? updatedb searchsploit? google dorks xploits? ~? dns axfr @ip ?
 
+PYTHON ESCAPE SCRIPT
+import os; os.execl("/bin/sh", "sh", "-p")
+
 DNS
 dig axfr @10.129.146.152 friendzone.red
 
