@@ -16,6 +16,9 @@ grep -B4 'blabla'
 GREP after
 hashcat --example-hashes|grep -A4 NTLM
 
+TUNNELING AND PORT REDIRECTS
+https://book.hacktricks.xyz/tunneling-and-port-forwarding
+
 Workspace alttab = CTRL+ALT+arrow // move window to a workspace: CTRL+ALT+SHIFT+arrow
 
 LINUX LIST USERS
