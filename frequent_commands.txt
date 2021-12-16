@@ -16,6 +16,9 @@ grep -B4 'blabla'
 GREP after
 hashcat --example-hashes|grep -A4 NTLM
 
+MKDIR recursive
+mkdir -p test/{recon,exploit,report}
+
 TUNNELING AND PORT REDIRECTS
 https://book.hacktricks.xyz/tunneling-and-port-forwarding
 
