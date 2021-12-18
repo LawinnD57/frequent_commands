@@ -16,6 +16,10 @@ grep -B4 'blabla'
 GREP after
 hashcat --example-hashes|grep -A4 NTLM
 
+LIST PROCESSES
+ps -aux
+sudo ss -antlp | grep apache
+
 MKDIR recursive
 mkdir -p test/{recon,exploit,report}
 
