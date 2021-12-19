@@ -21,8 +21,9 @@ ps -aux
 sudo ss -antlp | grep apache
 systemctl list-unit-files
 
-SED
+SED/AWK
 echo "I need to try hard" | sed 's/hard/harder/'
+echo "hello::there::friend" | awk -F "::" '{print $1, $3}'
 
 MKDIR recursive
 mkdir -p test/{recon,exploit,report}
