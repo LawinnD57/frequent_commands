@@ -153,6 +153,7 @@ C:\Windows\System32\WindowsPowerShell\v1.0\powershell
 sudo gem install evil-winrm
 //F for full access on a file:
 icacls C:\Users\Administrator\Desktop\root.txt /grant Alfred:(F)
+axel -a -n 20 -o report_axel.pdf https://www.offensive-security.com/reports/penetration-testing-sample-report-2013.pdf
 
 WINDOWS CMD
 Recursive search: where /r c:\ user.txt
