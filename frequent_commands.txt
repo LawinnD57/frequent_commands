@@ -26,6 +26,11 @@ echo "I need to try hard" | sed 's/hard/harder/'
 echo "hello::there::friend" | awk -F "::" '{print $1, $3}'
 cat access.log | cut -d " " -f 1 | sort | uniq -c | sort -urn
 
+VI
+Once the file is opened, enable insert-text mode to begin typing. To do this, press the i key and start typing away.
+To disable insert-text mode and go back to command mode, press the ~ key. 
+While in command mode, use dd to delete the current line, yy to copy the current line, p to paste the clipboard contents, x to delete the current character, :w to write the current file to disk and stay in vi, :q! to quit without writing the file to disk, and finally :wq to save and quit.
+
 MKDIR recursive
 mkdir -p test/{recon,exploit,report}
 
