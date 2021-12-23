@@ -67,6 +67,7 @@ The said screen was ran with: "/bin/sh -c while true;do sleep 1;find /var/run/sc
 STUCK??
 nmap tcp? udp? -sS -Pn -p-? https on 80? http has php? CTRL+U? gobuster/dirbuster? subdoms/vhosts? hidden files? stego?
 versions? updatedb searchsploit? google dorks xploits? ~? dns axfr @ip ?
+firefox --search "Microsoft Edge site:exploit-db.com"
 
 PYTHON ESCAPE SCRIPT
 import os; os.execl("/bin/sh", "sh", "-p")
