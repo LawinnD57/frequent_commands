@@ -26,6 +26,9 @@ echo "I need to try hard" | sed 's/hard/harder/'
 echo "hello::there::friend" | awk -F "::" '{print $1, $3}'
 cat access.log | cut -d " " -f 1 | sort | uniq -c | sort -urn
 
+FIND last day modified non-root files and do a ls -l on each of them
+find / ! -type d -mtime -1 ! -user root -exec ls -l {} 2>/dev/null \; 
+
 VI
 Once the file is opened, enable insert-text mode to begin typing. To do this, press the i key and start typing away.
 To disable insert-text mode and go back to command mode, press the ~ key. 
