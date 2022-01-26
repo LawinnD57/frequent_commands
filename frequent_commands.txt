@@ -19,6 +19,7 @@ hashcat --example-hashes|grep -A4 NTLM
 
 LIST PROCESSES
 ps -aux
+windows: netstat -ano -p tcp
 sudo ss -antlp | grep apache
 systemctl list-unit-files
 
