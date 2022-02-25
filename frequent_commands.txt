@@ -153,6 +153,7 @@ hydra nineveh.htb -l admin -P /opt/useful/SecLists/Passwords/Leaked-Databases/ro
 /opt/useful/SecLists/Usernames/top-usernames-shortlist.txt
 hashcat --example-hashes|grep -n3 md5
 hashcat -m 18200 -w 1 hash.txt /opt/useful/SecLists/Passwords/Leaked-Databases/rockyou.txt
+hashcat.exe -m 400 -w 1 hash.txt C:\Users\Lawinn\Desktop\KaliVM\Shared\OSCP\wordlists\rockyou.txt -r rules/best64.rule
 
 BINWALK
 cd /tmp && git clone https://github.com/ReFirmLabs/binwalk && cd - && cd /tmp/binwalk && sudo ./setup.py install && cd -
