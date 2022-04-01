@@ -269,7 +269,6 @@ exec "/bin/bash";
 
 SMB
 smbclient -N -L \\\\10.10.10.27\\
-smbclient --no-pass -L //<IP> # Null user
 smbclient -U 'username[%passwd]' -L [--pw-nt-hash] //<IP>
 smbmap -H <IP> [-P <PORT>] #Null user
 smbmap -u "username" -p "password" -H <IP> [-P <PORT>] #Creds
