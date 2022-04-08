@@ -62,7 +62,7 @@ CTRL + Z
 stty raw -echo
 fg
 
-SHARED FOLDER
+WINDOWS SHARED FOLDER ON LINUX
 sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/ -o allow_other
 
 SCREEN HI-JACK ROOT SUID SESSION
@@ -289,6 +289,9 @@ samdump2 -o out_file SYSTEM SAM
 msfconsole use winrm
 impacket-lookupids
 procdump https://download.sysinternals.com/files/Procdump.zip
+
+WINDOWS SHARE ON LINUX
+sudo mount -t cifs -o username=guest //10.129.127.236/Shares /mnt/timelapse
 
 SMB HASH STEAL
 1)Create file named hash.scf:
