@@ -29,6 +29,7 @@ echo "hello::there::friend" | awk -F "::" '{print $1, $3}'
 cat access.log | cut -d " " -f 1 | sort | uniq -c | sort -urn
 At least 3 chars:
 strings RouterSpace.apk |awk '/^[a-zA-Z]{3,}/'
+cat resources.arsc |awk '/[p\|P]assword/' > filteredpassword_resources.arsc
 
 FIND last day modified non-root files and do a ls -l on each of them
 find / ! -type d -mtime -1 ! -user root -exec ls -l {} 2>/dev/null \; 
