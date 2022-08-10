@@ -99,6 +99,9 @@ while True:
     
 ````
 
+JAVA CLASS DECOMPILE
+http://java-decompiler.github.io/
+
 SOCAT
 socat - TCP4:<remote server's ip address>:80
 sudo socat TCP4-LISTEN:443 STDOUT
