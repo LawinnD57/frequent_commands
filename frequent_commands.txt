@@ -1,3 +1,7 @@
+TOOLS
+https://www.revshells.com/
+https://github.com/21y4d/nmapAutomator
+
 USEFUL COMMANDS
 BOX=ip
 sudo nmap -sC -sV -oN AA.nmap AA.htb -v; sudo nmap -sS -sV -sC -T5 -p- -oN AA.full.nmap AA.htb -v
