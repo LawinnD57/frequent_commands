@@ -85,6 +85,9 @@ firefox --search "Microsoft Edge site:exploit-db.com"
 PYTHON ESCAPE SCRIPT
 import os; os.execl("/bin/sh", "sh", "-p")
 
+PYTHON PROXY 
+pip install packagename --proxy=http://gateway.zscaler.net:80
+
 PYTHON 
 ````
 import random
