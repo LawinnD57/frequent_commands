@@ -20,7 +20,9 @@ to count lines: wc -l <filename>
 GREP 4 lines before match:
 grep -B4 'blabla'
 GREP after
+GREP UTF-16: grep -a 'T.r.u.e' dont forget the dots because UTF-16 adds fillers
 hashcat --example-hashes|grep -A4 NTLM
+
 
 LIST PROCESSES
 ps -aux
