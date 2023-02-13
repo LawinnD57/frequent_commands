@@ -49,6 +49,9 @@ Once the file is opened, enable insert-text mode to begin typing. To do this, pr
 To disable insert-text mode and go back to command mode, press the ~ key. 
 While in command mode, use dd to delete the current line, yy to copy the current line, p to paste the clipboard contents, x to delete the current character, :w to write the current file to disk and stay in vi, :q! to quit without writing the file to disk, and finally :wq to save and quit.
 
+PYTHON COUNT FROM 1 TO 100
+python -c "print('\n'.join(map(str, range(1, 101))))"
+
 COMPARE FILES
 comm scan-a.txt scan-b.txt
 diff -u scan-a.txt scan-b.txt
