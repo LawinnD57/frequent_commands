@@ -81,6 +81,10 @@ fg
 WINDOWS SHARED FOLDER ON LINUX
 sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/ -o allow_other
 
+COMMAND ON BOOT - put in this file
+/etc/rc.local
+chmod +x or chmod 777 /etc/rc.local
+
 SCREEN HI-JACK ROOT SUID SESSION
 screen -x root/root
 The said screen was ran with: "/bin/sh -c while true;do sleep 1;find /var/run/screen/S-root/ -empty -exec screen -dmS root \;; done"
