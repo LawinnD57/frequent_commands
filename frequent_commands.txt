@@ -410,3 +410,10 @@ and put your own crafted binary when it is called directly in a script as root
 NMAP commands
 List interfaces (useful on Windows):
 nmap --iflist
+
+ADD IPs ON WINDOWS
+netsh interface ipv4 show interfaces
+netsh interface ipv4 add address "GigabitPLCSwitch" 192.168.137.185 255.255.0.0
+Delete:
+netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
+
