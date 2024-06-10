@@ -123,7 +123,6 @@ while True:
     #time.sleep(5)
     
 ````
-
 JAVA CLASS DECOMPILE
 http://java-decompiler.github.io/
 
@@ -160,6 +159,9 @@ https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/ma
 ./winPEASx64.exe | tee -filepath output.txt
 
 WINDOWS CHECK SYSTEM
+dism.exe /online /cleanup-image /scanhealth
+dism.exe /online /cleanup-image /restorehealth
+dism.exe /online /cleanup-image /startcomponentcleanup
 sfc /scannow
 
 BASH LOOP LOOP
