@@ -11,6 +11,7 @@ List interfaces (useful on Windows): nmap --iflist // nmap -e eth3
 
 
 USEFUL COMMANDS
+sudo tcpreplay -i eth1 short.pcap
 BOX=ip
 gobuster dir -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -k -u 
 ffuf -w /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://knife.htb/ -H 'Host: FUZZ.schooled.htb' -fs 5815
