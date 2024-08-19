@@ -32,6 +32,9 @@ grep -A 5 -B 5 -r blabla
 
 hashcat --example-hashes|grep -A4 NTLM
 
+WIRESHARK
+Wireshark hack for root privs:
+setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
 
 LIST PROCESSES
 ps -aux
