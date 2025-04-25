@@ -32,6 +32,10 @@ grep -A 5 -B 5 -r blabla
 
 hashcat --example-hashes|grep -A4 NTLM
 
+MODERN BOOTLOADER
+sudo apt install refind
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/bobafetthotmail/refind-theme-regular/master/install.sh)"
+
 WIRESHARK
 Wireshark hack for root privs:
 setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
