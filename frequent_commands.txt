@@ -8,6 +8,7 @@ FROM IP LIST: nmap -sCV -v -oN all.nmap -iL all.txt
 FAST PING SCAN: nmap -sP -T5 --min-parallelism 100 192.168.137.*
 NMAP double specific udp/tcp scan oneliner: nmap localhost -sUT -p U:2222,T:44818
 List interfaces (useful on Windows): nmap --iflist // nmap -e eth3
+Scan using nc: nc -nvv -w 1 -z 192.168.50.100 3388-3390
 
 
 USEFUL COMMANDS
