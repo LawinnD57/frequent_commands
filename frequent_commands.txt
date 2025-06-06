@@ -62,6 +62,8 @@ W11/Windows 11/Windaube
 Remove the "Additional options" menu to have it by default:
 reg add HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32 /ve /d "" /f
 reboot
+Remove the shitty sticky windows, called Snap layout:
+Windows+I -> System -> Multitasking -> remove "Show snap layouts when I drag a window to the top of my screen"
 
 VI
 Once the file is opened, enable insert-text mode to begin typing. To do this, press the i key and start typing away.
