@@ -73,6 +73,9 @@ While in command mode, use dd to delete the current line, yy to copy the current
 PYTHON COUNT FROM 1 TO 100
 python -c "print('\n'.join(map(str, range(1, 101))))"
 
+ADD 10.10.x.x IP ADDRESS RPI:
+sudo ip addr add 10.10.137.207/24 dev eth0
+
 COMPARE FILES
 comm scan-a.txt scan-b.txt
 diff -u scan-a.txt scan-b.txt
