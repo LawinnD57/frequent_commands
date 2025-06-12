@@ -41,6 +41,11 @@ WIRESHARK
 Wireshark hack for root privs:
 setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
 
+Setup TT/remote office/Teletravail
+Rdp all screens to laptop
+Brancher jabra et relancer chrome + Teams dans Chrome
+partager l'écran complet
+
 LIST PROCESSES
 ps -aux
 windows: netstat -ano -p tcp
