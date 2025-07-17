@@ -64,6 +64,7 @@ FIND last day modified non-root files and do a ls -l on each of them
 find / ! -type d -mtime -1 ! -user root -exec ls -l {} 2>/dev/null \; 
 
 W11/Windows 11/Windaube
+Bypass internet connection on install: Shift + F10 -> cd oobe -> bypassnro.cmd
 Remove the "Additional options" menu to have it by default:
 reg add HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32 /ve /d "" /f
 reboot
