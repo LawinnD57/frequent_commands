@@ -33,6 +33,9 @@ grep -A 5 -B 5 -r blabla
 
 hashcat --example-hashes|grep -A4 NTLM
 
+FAKE DISK ON WINDOWS:
+subst X: C:\Your\Folder\Path
+
 MODERN BOOTLOADER
 sudo apt install refind
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/bobafetthotmail/refind-theme-regular/master/install.sh)"
@@ -444,3 +447,4 @@ Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
 route print
 route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
 route DELETE 133.12.0.0
+
