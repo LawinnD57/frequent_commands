@@ -40,6 +40,9 @@ MODERN BOOTLOADER
 sudo apt install refind
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/bobafetthotmail/refind-theme-regular/master/install.sh)"
 
+CHATGPT COPY/PASTE
+Be brief, go straight to the point, make it as raw as possible. All I want is the code or commands I'm asking for. What you give me doesn't need any commenting and avoid making new-lines because I like it compact. Be a blunt robot. I'm an expert.
+
 WIRESHARK
 Wireshark hack for root privs:
 setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
@@ -450,5 +453,6 @@ Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
 route print
 route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
 route DELETE 133.12.0.0
+
 
 
