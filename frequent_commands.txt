@@ -139,6 +139,11 @@ import os; os.execl("/bin/sh", "sh", "-p")
 PYTHON PROXY 
 pip install packagename --proxy=http://gateway.zscaler.net:80
 
+POWERSHELL PROXY
+$env:HTTP_PROXY  = 'http://gateway.zscaler.net:80'
+$env:HTTPS_PROXY = 'http://gateway.zscaler.net:80'
+playwright install
+
 PYTHON 
 ````
 import random
@@ -453,6 +458,7 @@ Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
 route print
 route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
 route DELETE 133.12.0.0
+
 
 
 
