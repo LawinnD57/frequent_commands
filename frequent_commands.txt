@@ -114,6 +114,7 @@ PYTHON2 TO PYTHON3 CONVERT
 2to3-2.7 -w 46635.py
 
 CTRL + Z
+script /dev/null -c bash
 stty raw -echo
 fg
 
@@ -458,6 +459,7 @@ Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
 route print
 route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
 route DELETE 133.12.0.0
+
 
 
 
