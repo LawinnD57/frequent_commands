@@ -336,6 +336,9 @@ SSH port binding
 ssh -L [LOCAL_IP:]LOCAL_PORT:DESTINATION:DESTINATION_PORT [USER@]SSH_SERVER
 ssh -p 2222 -L 5555:localhost:5555 kristi@explore.htb
 
+BURP INJECT HEADER
+Burp suite doesnt allow to inject a header but we can match & replace something like User-Agent and put what we need.
+
 SQL INJECTIONS
 admin' or '1' = '1
 Copy to file login request from Burp name it "req"
@@ -459,6 +462,7 @@ Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
 route print
 route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
 route DELETE 133.12.0.0
+
 
 
 
