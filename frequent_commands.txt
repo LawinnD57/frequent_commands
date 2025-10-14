@@ -13,6 +13,7 @@ Scan using nc: nc -nvv -w 1 -z 192.168.50.100 3388-3390
 
 USEFUL COMMANDS
 sudo tcpreplay -i eth1 short.pcap
+tcprewrite --enet-smac=e4:5f:01:ac:27:ae --enet-dmac=00:80:f4:11:c2:1f --srcipmap=0.0.0.0/0:192.168.137.207 --dstipmap=0.0.0.0/0:192.168.200.210 --infile=Nessus_attack_October2025.pcapng --outfile=modif.pcapng
 BOX=ip
 gobuster dir -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -k -u 
 ffuf -w /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://knife.htb/ -H 'Host: FUZZ.schooled.htb' -fs 5815
@@ -462,6 +463,7 @@ Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
 route print
 route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
 route DELETE 133.12.0.0
+
 
 
 
