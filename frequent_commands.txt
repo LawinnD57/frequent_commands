@@ -9,6 +9,8 @@ FAST PING SCAN: nmap -sP -T5 --min-parallelism 100 192.168.137.*
 NMAP double specific udp/tcp scan oneliner: nmap localhost -sUT -p U:2222,T:44818
 List interfaces (useful on Windows): nmap --iflist // nmap -e eth3
 Scan using nc: nc -nvv -w 1 -z 192.168.50.100 3388-3390
+NMAP SNMP NETSTAT
+nmap -sU -p161 192.168.200.230 --script=snmp-netstat
 
 
 USEFUL COMMANDS
@@ -463,6 +465,7 @@ Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
 route print
 route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
 route DELETE 133.12.0.0
+
 
 
 
