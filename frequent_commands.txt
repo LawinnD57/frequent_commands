@@ -137,6 +137,9 @@ nmap tcp? udp? -sS -Pn -p-? https on 80? http has php? CTRL+U? gobuster/dirbuste
 versions? updatedb searchsploit? google dorks xploits? ~? dns axfr @ip ?
 firefox --search "Microsoft Edge site:exploit-db.com"
 
+OCTOPRINT/3D PRINT
+Octopi, plugin "PSU control", pin 24
+
 PYTHON ESCAPE SCRIPT
 import os; os.execl("/bin/sh", "sh", "-p")
 
@@ -465,6 +468,7 @@ Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
 route print
 route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
 route DELETE 133.12.0.0
+
 
 
 
