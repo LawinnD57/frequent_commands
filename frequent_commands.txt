@@ -49,6 +49,8 @@ Be brief, go straight to the point, make it as raw as possible. All I want is th
 WIRESHARK
 Have wireshark through ssh with elevated privileges but without sudo (bypass of xdisplay server problem):
 sudo setcap cap_net_raw,cap_net_admin=eip $(which dumpcap)
+Filter packets by frame id:
+ip.addr == 192.168.200.230 && http && frame.number >= 144
 
 Setup TT/remote office/Teletravail
 Rdp all screens to laptop
@@ -468,6 +470,7 @@ Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
 route print
 route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
 route DELETE 133.12.0.0
+
 
 
 
