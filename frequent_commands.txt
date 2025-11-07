@@ -66,6 +66,10 @@ systemctl list-unit-files
 SAVE ALL TMUX SESSION TO A FILE
 tmux capture-pane -S - -E - -p > tmux_output.log
 
+WINDOWS SPLIT CMD TERM
+alt + shift + d
+alt + shift + - (- du 6)
+
 SED/AWK
 echo "I need to try hard" | sed 's/hard/harder/'
 echo "hello::there::friend" | awk -F "::" '{print $1, $3}'
@@ -470,6 +474,7 @@ Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
 route print
 route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
 route DELETE 133.12.0.0
+
 
 
 
