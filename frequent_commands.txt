@@ -119,6 +119,10 @@ cat /etc/passwd |grep -v 'nologin\|false'|cut -d ':' -f 1
 LINUX LOGS
 aureport --tty
 
+ACTIVATE WINDOWS
+irm https://get.activated.win | iex
+https://github.com/massgravel/Microsoft-Activation-Scripts
+
 PYTHON2 TO PYTHON3 CONVERT
 2to3-2.7 -w 46635.py
 
@@ -474,6 +478,7 @@ Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
 route print
 route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
 route DELETE 133.12.0.0
+
 
 
 
