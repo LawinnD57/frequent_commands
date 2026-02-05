@@ -1,8 +1,8 @@
-USEFUL COMMANDS
-sudo tcpreplay -i eth1 short.pcap
-tcprewrite --enet-smac=e4:5f:01:ac:27:ae --enet-dmac=00:80:f4:11:c2:1f --srcipmap=0.0.0.0/0:192.168.137.207 --dstipmap=0.0.0.0/0:192.168.200.210 --infile=Nessus_attack_October2025.pcapng --outfile=modif.pcapng
-BOX=ip
-gobuster dir -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -k -u 
-ffuf -w /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://knife.htb/ -H 'Host: FUZZ.schooled.htb' -fs 5815
-sudo !!
-stty raw -echo
+OR in grep: grep 'false\|nologin'
+to count lines: wc -l <filename>
+GREP 4 lines before match:
+grep -B4 'blabla'
+GREP after
+GREP UTF-16: grep -a 'T.r.u.e' dont forget the dots because UTF-16 adds fillers
+GREP 5 lines BEOFRE and AFTER:
+grep -A 5 -B 5 -r blabla
