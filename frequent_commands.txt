@@ -16,6 +16,27 @@ CHECK SIGNATURE OF A FILE
 In Powershell:
 Get-AuthenticodeSignature <filename>
 
+WIKIJS INSTALL
+1)nano docker-compose.yml
+2)-> paste this:
+
+version: "3"
+services:
+  wikijs:
+    image: requarks/wiki:2
+    container_name: wikijs
+    ports:
+      - "3000:3000"
+    environment:
+      DB_TYPE: "sqlite"
+      DB_FILE_PATH: "/data/wikijs.sqlite"
+    volumes:
+      - wikijs_data:/data
+volumes:
+  wikijs_data:
+
+3) sudo docker-compose up -d
+4) http://<ip>:3000/
 
 USEFUL COMMANDS
 sudo tcpreplay -i eth1 short.pcap
@@ -491,6 +512,7 @@ Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
 route print
 route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
 route DELETE 133.12.0.0
+
 
 
 
