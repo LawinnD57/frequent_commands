@@ -282,6 +282,8 @@ cewl http://site/
 
 BINWALK
 cd /tmp && git clone https://github.com/ReFirmLabs/binwalk && cd - && cd /tmp/binwalk && sudo ./setup.py install && cd -
+Extract recursively:
+binwalk -eM
 
 RBASH ESCAPE
 ssh <username>@<IP-Adress> -t "bash --noprofile"
@@ -512,6 +514,7 @@ Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
 route print
 route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
 route DELETE 133.12.0.0
+
 
 
 
