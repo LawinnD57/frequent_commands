@@ -22,7 +22,7 @@ notepad $PROFILE
 Examples:
 Set-Alias p python
 Set-Alias npp "C:\Program Files\Notepad++\notepad++.exe"
-function s{param([string]$n) python ("<ADD PATH>\PLCCYBER-"+$n+".py")}
+function s{param($n) python (Get-ChildItem "C:\Users\XXXXXXXXX\Documents\SecurityTesting\TC_optimization\PLCCYBER-$n*.py" | Select-Object -First 1).FullName @args}
 
 WIKIJS INSTALL
 1)nano docker-compose.yml
@@ -522,6 +522,7 @@ Delete: netsh interface ipv4 delete address "GigabitPLCSwitch" 192.168.137.185
 route print
 route add 133.12.0.0 MASK 255.255.0.0 133.11.27.101 IF 14
 route DELETE 133.12.0.0
+
 
 
 
