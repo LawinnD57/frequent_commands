@@ -24,6 +24,9 @@ Set-Alias p python
 Set-Alias npp "C:\Program Files\Notepad++\notepad++.exe"
 function s{param($n) python (Get-ChildItem "C:\Users\XXXXXXXXX\Documents\SecurityTesting\TC_optimization\PLCCYBER-$n*.py" | Select-Object -First 1).FullName @args}
 
+TCPDUMP
+sudo tcpdump -i eth0 -nn 'tcp port 443 and host 192.168.30.20'
+
 WIKIJS INSTALL
 1)nano docker-compose.yml
 2)-> paste this:
