@@ -14,6 +14,21 @@ copy C:\Windows\System32\cmd.exe C:\Windows\System32\Utilman.exe
 7. Clear the password:
 net user VerificationPentest ""
 
+VLAN TAG ID 1 LINUX
+# 3 commands:
+sudo vconfig add eth0 1
+sudo ip addr add 192.168.20.50/24 dev eth0.1
+# Making it permanent
+To make this setup permanent, the following lines have to be added a couple of configuration files.
+1. Add the module to the kernel on boot:
+sudo su -c 'echo "8021q" >> /etc/modules'
+2. Create the interface and make it available when the system boots. Add the following lines to /etc/network/interfaces (change the values according to your scenario):
+auto eth0.1
+iface eth0.1 inet static
+    address 192.168.20.50
+    netmask 255.255.0.0
+    vlan-raw-device eth0
+
 NMAP
 https://github.com/21y4d/nmapAutomator
 sudo nmap -sC -sV -oN AA.nmap AA.htb -v; sudo nmap -sS -sV -sC -T5 -p- -oN AA.full.nmap AA.htb -v
